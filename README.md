@@ -17,6 +17,60 @@ Instead of receiving a single, potentially biased answer from a standard AI, Deb
 
 ---
 
+## Tech Stack
+
+- **Frontend:** Vue 3, Vite, Tailwind CSS, Vue Router
+- **Backend:** FastAPI, Uvicorn, Python
+- **AI Orchestration:** LangGraph
+- **LLM Integration:** OpenAI API
+- **Database:** PostgreSQL
+- **Containerization:** Docker, Docker Compose
+- **Web Server:** Nginx
+
+---
+
+## Architecture
+
+DebateMaster uses a three-service containerized architecture managed by Docker Compose.
+
+```text
+User Browser
+    │
+    ▼
+Vue 3 + Nginx :80
+    │
+    │ REST API / SSE
+    ▼
+FastAPI :8000
+    ├── LangGraph Agents
+    │     └── OpenAI API
+    └── PostgreSQL :5432
+```
+
+## My Contributions
+
+This was a team project. My main contributions focused on backend API development and frontend–backend integration.
+
+- Developed backend services using **FastAPI**
+- Designed and implemented **RESTful API** endpoints for frontend functionality
+- Connected frontend interactions with backend services through API requests
+- Implemented request and response flows between the frontend and backend
+- Contributed to integrating application logic with the overall debate workflow
+
+---
+
+## Technical Highlights
+- Multi-agent debate workflow coordinated using LangGraph
+- Separate Pro, Con, and Judge agents for structured debate generation and evaluation
+- RESTful API design using FastAPI
+- Server-Sent Events (SSE) for streaming debate messages to the frontend
+- Persistent storage of debate sessions, messages, and summaries in PostgreSQL
+- Frontend and backend deployed as separate services for clear separation of concerns
+- Vue frontend served through Nginx
+- Full application containerized using Docker Compose
+
+---
+
 ## How to Deploy
 
 DebateMaster is fully containerized. Deploying the entire stack (Frontend, Backend, and Database) takes only a few minutes using Docker Compose.
@@ -54,3 +108,19 @@ It will start 3 docker containers: frontend, backend and DB
 Once the containers are successfully started, you can access the platform at:
 * Frontend Web Interface: http://localhost
 * Backend API Docs (Swagger UI): http://localhost:8000/docs
+
+---
+
+## Application Preview
+
+### Debate Dashboard
+
+![Debate dashboard](docs/dashboard.png)
+
+### Debate Process
+
+![Debate Process](docs/prompt-and-debate.png)
+
+### Debate Summary
+
+![Debate Summary](docs/agent-conclusion.png)
